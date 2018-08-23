@@ -1,0 +1,11 @@
+{
+  "name": "slack-wannabe",
+  "scripts": {
+    "dev": "nuxt"
+  },
+  "dependencies": {
+    "ajv": "^6.5.3",
+    "firebase": "^5.4.0",
+    "nuxt": "^1.4.2"
+  }
+}
