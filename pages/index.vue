@@ -2,7 +2,15 @@
   <div>
     <textarea v-model="input" type="text"></textarea>
     <p v-on:click="post">投稿</p>
-    <p>{{ posts }}</p>
+    <div v-if="messages">
+      <div v-for="value in messages">
+        {{ value.text }}
+      </div>
+    </div>
+    <div v-else>
+      loading...
+    </div>
+
   </div>
 </template>
 
@@ -15,19 +23,20 @@
     data () {
       return {
         input: "",
-        posts: {}
+        messages: null
       }
     },
     methods: {
       post: function () {
-        db.ref('posts').push().set({
+        db.ref('messages').push().set({
           text: this.input
         });
+        this.input = ""
       }
     },
     mounted () {
-      db.ref('posts').on('value', (snapshot) => {
-        this.posts = snapshot.val();
+      db.ref('messages').on('value', (snapshot) => {
+        this.messages = snapshot.val();
       })
     }
   }
