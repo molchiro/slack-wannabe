@@ -2,9 +2,9 @@
   <div>
     <textarea v-model="input" type="text"></textarea>
     <p v-on:click="post">投稿</p>
-    <div v-if="messages">
-      <div v-for="value in messages">
-        {{ value.text }}
+    <div v-if="messages.length > 0">
+      <div v-for="message in messages">
+        {{ message.text }}
       </div>
     </div>
     <div v-else>
@@ -23,7 +23,7 @@
     data () {
       return {
         input: "",
-        messages: null
+        messages: []
       }
     },
     methods: {
@@ -35,8 +35,8 @@
       }
     },
     mounted () {
-      db.ref('messages').on('value', (snapshot) => {
-        this.messages = snapshot.val();
+      db.ref('messages').on('child_added', (snapshot) => {
+        this.messages.push(snapshot.val());
       })
     }
   }
