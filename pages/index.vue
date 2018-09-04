@@ -11,7 +11,7 @@
       <!--TODO:投稿がゼロ件でもloadingになってしまう-->
       <div v-if="messages.length > 0">
         <div v-for="message in messages">
-          {{ message.displayName }}:{{ message.text }}
+          {{ message.displayName }}:{{ message.content }}
         </div>
       </div>
       <div v-else>
@@ -46,7 +46,7 @@
         if ( !this.input ) { return }
         db.ref('messages').push({
           displayName: this.authUser.displayName,
-          text: this.input
+          content: this.input
         });
         this.input = ""
       },
