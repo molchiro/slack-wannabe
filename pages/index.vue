@@ -17,8 +17,8 @@
       <div v-else>
         loading messages...
       </div>
-      <!--input area-->
-      <textarea v-model="input" type="text"></textarea>
+      <!--writing area-->
+      <textarea v-model="writing" type="text"></textarea>
       <!--action-->
       <button @click="post">投稿</button>
     </div>
@@ -36,19 +36,19 @@
   export default{
     data () {
       return {
-        input: "",
+        writing: "",
         messages: [],
         authUser: null
       }
     },
     methods: {
       post () {
-        if ( !this.input ) { return }
+        if ( !this.writing ) { return }
         db.ref('messages').push({
           displayName: this.authUser.displayName,
-          content: this.input
+          content: this.writing
         });
-        this.input = ""
+        this.writing = ""
       },
       signIn () {
         const provider = new firebase.auth.GoogleAuthProvider();
