@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>slack-wannabe</h1>
     <div v-if="authUser">
       <!--username-->
       <p>
