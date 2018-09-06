@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div v-if="authUser">
+    <div v-if="$store.state.authUser">
       <!--username-->
       <p>
-        signed in as [{{ authUser.displayName }}]
+        signed in as [{{ $store.state.authUser.displayName }}]
         <button @click="signOut">sign out</button>
       </p>
       <!--messages-->
@@ -32,19 +32,18 @@
 
   const db = firebase.database();
 
-  export default{
+  export default {
     data () {
       return {
         writing: "",
-        messages: [],
-        authUser: null
+        messages: []
       }
     },
     methods: {
       post () {
         if ( !this.writing ) { return }
         db.ref('messages').push({
-          displayName: this.authUser.displayName,
+          displayName: this.$store.authUser.displayName,
           content: this.writing
         });
         this.writing = ""
@@ -55,10 +54,13 @@
       },
       signOut () {
         firebase.auth().signOut()
+        this.$store.cimmit('clearAuthUser')
       }
     },
     created () {
-      firebase.auth().onAuthStateChanged( user => { this.authUser = user })
+      firebase.auth().onAuthStateChanged( user => {
+        this.$store.commit('setAuthUser', user)
+      })
     },
     mounted () {
       db.ref('messages').on('child_added', snapshot => {
