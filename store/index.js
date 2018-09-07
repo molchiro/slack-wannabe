@@ -1,5 +1,4 @@
 import Vuex from 'vuex'
-import firebase from '~/plugins/firebase.js'
 
 const store = () => new Vuex.Store({
   state: {
