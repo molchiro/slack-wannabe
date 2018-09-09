@@ -1,10 +1,10 @@
 <template>
   <div>
     <appHeader></appHeader>
-    <div v-if="$store.state.authUser">
+    <div v-show="$store.state.authUser">
       <nuxt></nuxt>
     </div>
-    <div v-else>
+    <div v-show="!$store.state.authUser">
       <signIn></signIn>
     </div>
   </div>
@@ -20,10 +20,5 @@
       appHeader,
       signIn
     },
-    created () {
-      firebase.auth().onAuthStateChanged( user => {
-        this.$store.commit('setAuthUser', user)
-      })
-    }
   }
 </script>
