@@ -15,7 +15,7 @@
     methods: {
       signOut () {
         firebase.auth().signOut()
-        this.$store.cimmit('clearAuthUser')
+        this.$store.commit('setAuthUser', null)
       }
     }
   }

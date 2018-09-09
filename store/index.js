@@ -7,9 +7,6 @@ const store = () => new Vuex.Store({
   mutations: {
     setAuthUser (state, user) {
       state.authUser = user
-    },
-    clearAuthUser (state) {
-      state.authUser = null
     }
   }
 })
