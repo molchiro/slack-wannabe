@@ -11,33 +11,24 @@
       loading messages...
     </div>
     <!--writing area-->
-    <textarea v-model="writing" type="text"></textarea>
-    <!--action-->
-    <button @click="post">投稿</button>
+    <post></post>
   </div>
 </template>
 
 <script>
   import firebase from '~/plugins/firebase.js'
+  import post from '~/components/post.vue'
 
   const db = firebase.database();
 
   export default {
     data () {
       return {
-        writing: "",
         messages: []
       }
     },
-    methods: {
-      post () {
-        if ( !this.writing ) { return }
-        db.ref('messages').push({
-          displayName: this.$store.state.authUser.displayName,
-          content: this.writing
-        });
-        this.writing = ""
-      }
+    components: {
+      post
     },
     mounted () {
       db.ref('messages').on('child_added', snapshot => {
