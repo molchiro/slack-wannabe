@@ -6,9 +6,7 @@
 </template>
 
 <script>
-  import firebase from '~/plugins/firebase.js'  
-
-  const db = firebase.database();
+  import firebase from '~/plugins/firebase.js'
 
   export default {
     data () {
@@ -19,7 +17,7 @@
     methods: {
       post () {
         if ( !this.writing ) { return }
-        db.ref('messages').push({
+        firebase.database().ref('messages').push({
           displayName: this.$store.state.authUser.displayName,
           content: this.writing
         });
