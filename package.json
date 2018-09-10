@@ -5,7 +5,12 @@
   },
   "dependencies": {
     "ajv": "^6.5.3",
+    "bulma": "^0.7.1",
     "firebase": "^5.4.2",
     "nuxt": "^1.4.2"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0"
   }
 }
