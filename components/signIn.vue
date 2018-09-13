@@ -1,9 +1,10 @@
 <template>
   <div>
-    <div v-show="isWaitingAuth">
-      connecting...
-    </div>
-    <button v-show="!isWaitingAuth" @click="signIn">sign in</button>
+    <button class="button is-primary is-large"
+      v-bind:class="{ 'is-loading': isWaitingAuth }"
+      @click="signIn">
+      sign in
+    </button>
   </div>
 </template>
 

@@ -1,12 +1,14 @@
 <template>
   <div>
     <appHeader></appHeader>
-    <div v-show="$store.state.authUser">
-      <nuxt></nuxt>
-    </div>
-    <div v-show="!$store.state.authUser">
-      <signIn></signIn>
-    </div>
+    <section class="hero is-info is-fullheight">
+      <div class="hero-body">
+        <div class="container">
+          <nuxt v-show="$store.state.authUser"></nuxt>
+          <signIn v-show="!$store.state.authUser"></signIn>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 

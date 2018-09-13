@@ -1,11 +1,19 @@
 <template>
-  <div>
-    <h1>slack-wannabe</h1>
-    <div v-if="$store.state.authUser">
-      signed in as [{{ $store.state.authUser.displayName }}]
-      <button @click="signOut">sign out</button>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <span class="navbar-item title">
+        slack-wannabe
+      </span>
     </div>
-  </div>
+    <div class="navbar-menu is-active">
+      <div class="navbar-end">
+        <span class="navbar-item" v-if="$store.state.authUser">
+          {{ $store.state.authUser.displayName }}
+          <button class="button" @click="signOut">sign out</button>
+        </span>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
