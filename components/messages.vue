@@ -3,7 +3,7 @@
     <!--TODO:投稿がゼロ件でもloadingになってしまう-->
     <div v-if="messages.length > 0">
       <div v-for="message in messages">
-        {{ message.displayName }}:{{ message.content }}
+        <message :message=message></message>
       </div>
     </div>
     <div v-else>
@@ -14,8 +14,12 @@
 
 <script>
   import firebase from '~/plugins/firebase.js'
+  import message from '~/components/message.vue'
 
   export default {
+    components: {
+      message
+    },
     data () {
       return {
         messages: []
