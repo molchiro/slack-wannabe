@@ -39,3 +39,18 @@
     },
   }
 </script>
+
+<style scoped lang="sass">
+  .my-message
+    padding: 5px
+    padding-left: 10px
+    border-radius: 3px
+    background-color: #EEFAFF
+    margin-bottom: 3px
+  .my-message-body
+    line-height: 1.3
+  .displayName
+    font-weight: bold
+  .timestamp
+    font-size: 0.75rem
+</style>
