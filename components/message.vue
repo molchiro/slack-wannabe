@@ -8,8 +8,7 @@
         {{ formatedTimestamp }}
       </span>
     </div>
-      <span class="my-message-body">
-        {{ message.content }}
+      <span class="my-message-body" v-text="message.content">
       </span>
     </div>
   </div>
@@ -48,6 +47,7 @@
     background-color: #EEFAFF
     margin-bottom: 3px
   .my-message-body
+    white-space: pre-wrap
     line-height: 1.3
   .displayName
     font-weight: bold
