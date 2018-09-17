@@ -1,7 +1,7 @@
 <template>
   <div>
     <appHeader></appHeader>
-    <section class="hero is-info is-fullheight">
+    <section class="hero is-fullheight">
       <div class="hero-body">
         <div class="container">
           <nuxt v-show="$store.state.authUser"></nuxt>
