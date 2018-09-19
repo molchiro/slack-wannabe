@@ -7,6 +7,7 @@
 
 <script>
   import firebase from '~/plugins/firebase.js'
+  import { mapGetters } from 'vuex'
 
   export default {
     data () {
@@ -14,17 +15,23 @@
         writing: "",
       }
     },
+    computed: {
+      ...mapGetters([
+        'authUser',
+      ])
+    },
     methods: {
       post () {
         if ( !this.writing ) { return }
         firebase.database().ref('messages').push({
-          uid: this.$store.state.authUser.uid,
+          uid: this.authUser.uid,
           timestamp: new Date().getTime(),
-          displayName: this.$store.state.authUser.displayName,
+          displayName: this.authUser.displayName,
           content: this.writing
         });
         this.writing = ""
       }
     },
+
   }
 </script>

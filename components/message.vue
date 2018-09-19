@@ -8,6 +8,7 @@
         {{ formatedTimestamp }}
       </span>
     </div>
+    <div>
       <span class="my-message-body" v-text="message.content">
       </span>
     </div>
@@ -33,7 +34,8 @@
     data () {
       return {
         formatedTimestamp: unixTime2ymd(this.message.timestamp),
-        isAuthUser: this.$store.state.authUser.uid===this.message.uid
+        // mapGettersを使いたいが、エラーが出るので$store.gettersで妥協
+        isAuthUser: this.$store.getters.authUser.uid===this.message.uid
       }
     },
   }

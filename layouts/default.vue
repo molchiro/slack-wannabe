@@ -4,8 +4,8 @@
     <section class="hero is-fullheight">
       <div class="hero-body">
         <div class="container">
-          <nuxt v-show="$store.state.authUser"></nuxt>
-          <signIn v-show="!$store.state.authUser"></signIn>
+          <nuxt v-show="authUser"></nuxt>
+          <signIn v-show="!authUser"></signIn>
         </div>
       </div>
     </section>
@@ -16,11 +16,17 @@
   import firebase from '~/plugins/firebase.js'
   import appHeader from '~/components/appHeader.vue'
   import signIn from '~/components/signIn.vue'
+  import { mapGetters } from 'vuex'
 
   export default {
     components: {
       appHeader,
       signIn
+    },
+    computed: {
+      ...mapGetters([
+        'authUser',
+      ])
     },
   }
 </script>

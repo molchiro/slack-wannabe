@@ -7,8 +7,8 @@
     </div>
     <div class="navbar-menu is-active">
       <div class="navbar-end">
-        <span class="navbar-item" v-if="$store.state.authUser">
-          {{ $store.state.authUser.displayName }}
+        <span class="navbar-item" v-if="authUser">
+          {{ authUser.displayName }}
           <button class="button" @click="signOut">sign out</button>
         </span>
       </div>
@@ -18,8 +18,14 @@
 
 <script>
   import firebase from '~/plugins/firebase.js'
+  import { mapGetters } from 'vuex'
 
   export default {
+    computed: {
+      ...mapGetters([
+        'authUser',
+      ])
+    },
     methods: {
       signOut () {
         firebase.auth().signOut()
