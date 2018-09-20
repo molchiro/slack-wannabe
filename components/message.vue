@@ -17,6 +17,7 @@
 
 <script>
   import firebase from '~/plugins/firebase.js'
+  import { mapGetters } from 'vuex'
 
   const unixTime2ymd = ( intTime ) => {
     const d = new Date( intTime );
@@ -34,9 +35,13 @@
     data () {
       return {
         formatedTimestamp: unixTime2ymd(this.message.timestamp),
-        // mapGettersを使いたいが、エラーが出るので$store.gettersで妥協
-        isAuthUser: this.$store.getters.authUser.uid===this.message.uid
+        isAuthUser: this.authUser.uid === this.message.uid
       }
+    },
+    methods: {
+      ...mapGetters([
+        'authUser',
+      ])
     },
   }
 </script>
