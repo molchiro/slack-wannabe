@@ -32,16 +32,12 @@
 
   export default {
     props: ['message'],
-    data () {
-      return {
-        formatedTimestamp: unixTime2ymd(this.message.timestamp),
-        isAuthUser: this.authUser.uid === this.message.uid
-      }
-    },
-    methods: {
+    computed: {
       ...mapGetters([
         'authUser',
-      ])
+      ]),
+      formatedTimestamp: function () { return unixTime2ymd(this.message.timestamp) },
+      isAuthUser: function () { return this.authUser.uid === this.message.uid },
     },
   }
 </script>
