@@ -36,8 +36,12 @@
       ...mapGetters([
         'authUser',
       ]),
-      formatedTimestamp: function () { return unixTime2ymd(this.message.timestamp) },
-      isAuthUser: function () { return this.authUser.uid === this.message.uid },
+      formatedTimestamp: function () {
+        return unixTime2ymd(this.message.timestamp)
+      },
+      isAuthUser: function () {
+        return this.authUser.uid === this.message.uid
+      },
     },
   }
 </script>
