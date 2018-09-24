@@ -18,17 +18,7 @@
 <script>
   import firebase from '~/plugins/firebase.js'
   import { mapGetters } from 'vuex'
-
-  const unixTime2ymd = ( intTime ) => {
-    const d = new Date( intTime );
-    const year = d.getFullYear();
-    const month = d.getMonth();
-    const day = d.getDate();
-    const hour = ( '0' + d.getHours() ).slice(-2);
-    const min = ( '0' + d.getMinutes() ).slice(-2);
-    const sec = ( '0' + d.getSeconds() ).slice(-2);
-    return year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec;
-  };
+  import format from 'date-fns/format'
 
   export default {
     props: ['message'],
@@ -37,7 +27,7 @@
         'authUser',
       ]),
       formatedTimestamp: function () {
-        return unixTime2ymd(this.message.timestamp)
+        return format(this.message.timestamp, 'YYYY-MM-DD HH:mm')
       },
       isAuthUser: function () {
         return this.authUser.uid === this.message.uid
