@@ -1,7 +1,7 @@
 <template>
   <div class="my-message">
     <div class="my-message-header">
-      <span class="displayName">
+      <span class="display-name">
         {{ message.displayName }}
       </span>
       <span class="timestamp">
@@ -56,7 +56,7 @@
   .my-message-body
     white-space: pre-wrap
     line-height: 1.3
-  .displayName
+  .display-name
     font-weight: bold
   .timestamp
     font-size: 0.75rem
