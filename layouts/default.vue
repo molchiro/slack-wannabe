@@ -1,9 +1,9 @@
 <template>
   <div>
     <appHeader></appHeader>
-    <section class="hero is-fullheight">
-      <div class="hero-body">
-        <div class="container">
+    <section>
+      <div>
+        <div>
           <nuxt v-show="authUser"></nuxt>
           <signIn v-show="!authUser"></signIn>
         </div>
