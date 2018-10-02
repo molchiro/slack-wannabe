@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin: auto;">
     <button class="button is-primary is-large"
       v-bind:class="{ 'is-loading': isWaitingAuth }"
       @click="signIn">

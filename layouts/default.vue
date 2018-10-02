@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div style="display: flex; flex-direction: column">
     <appHeader></appHeader>
-    <section>
+    <section class="content-body">
       <div>
         <div>
           <nuxt v-show="authUser"></nuxt>
@@ -30,3 +30,11 @@
     },
   }
 </script>
+
+<style scoped lang="sass">
+  .content-body
+    padding: 5px
+    flex-grow: 1
+    max-width: 600px
+    margin: 0 auto
+</style>

@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <messages></messages>
-    <post></post>
+  <div class="chat-container">
+    <messages class="messages-list"></messages>
+    <post class="post-area"></post>
   </div>
 </template>
 
@@ -16,3 +16,11 @@
     },
   }
 </script>
+
+<style scoped lang="sass">
+  .chat-container
+    display: flex
+    flex-direction: column
+  .messages-list
+  .post-area
+</style>
