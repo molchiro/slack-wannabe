@@ -39,7 +39,6 @@
   .messages-container
     height: 50vh
     display: flex
-    flex-direction: column
   .messages
     overflow-y: scroll
 </style>
