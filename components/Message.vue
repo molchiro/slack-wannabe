@@ -21,7 +21,17 @@
   import format from 'date-fns/format'
 
   export default {
-    props: ['message'],
+    props: ['messageKey'],
+    data () {
+      return {
+        message: {
+          content: "",
+          displayName: "",
+          timestamp: "",
+          uid: "",
+        },
+      }
+    },
     computed: {
       ...mapGetters([
         'authUser',
@@ -32,6 +42,13 @@
       isAuthUser: function () {
         return this.authUser.uid === this.message.uid
       },
+    },
+    mounted () {
+      firebase.database().ref('messages').child(this.messageKey).once('value').then(
+        snapshot => {
+          this.message = snapshot.val()
+        }
+      )
     },
   }
 </script>
