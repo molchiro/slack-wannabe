@@ -21,7 +21,7 @@
   import format from 'date-fns/format'
 
   export default {
-    props: ['messageKey'],
+    props: ['messageRef'],
     data () {
       return {
         message: {
@@ -44,7 +44,7 @@
       },
     },
     mounted () {
-      firebase.database().ref('messages').child(this.messageKey).once('value').then(
+      this.messageRef.once('value').then(
         snapshot => {
           this.message = snapshot.val()
         }

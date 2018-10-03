@@ -2,10 +2,10 @@
   <div class="messages-container">
     <div class="messages">
       <!--TODO:投稿がゼロ件でもloadingになってしまう-->
-      <div v-if="messageKeys.length > 0">
-        <message v-for="messageKey in messageKeys"
-          :key="messageKey"
-          :messageKey=messageKey>
+      <div v-if="messageRefs.length > 0">
+        <message v-for="messageRef in messageRefs"
+          :key="messageRef.key"
+          :messageRef=messageRef>
         </message>
       </div>
       <div v-else>
@@ -25,12 +25,13 @@
     },
     data () {
       return {
-        messageKeys: []
+        messageRefs: []
       }
     },
     mounted () {
-      firebase.database().ref('messages').on('child_added', snapshot => {
-        this.messageKeys.push(snapshot.key);
+      const messagesRef = firebase.database().ref('messages')
+      messagesRef.on('child_added', snapshot => {
+        this.messageRefs.push(messagesRef.child(snapshot.key));
       })
     }
   }
