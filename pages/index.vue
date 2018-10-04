@@ -1,18 +1,15 @@
 <template>
   <div>
-    <messages></messages>
-    <post></post>
+    <chat></chat>
   </div>
 </template>
 
 <script>
-  import messages from '~/components/messages.vue'
-  import post from '~/components/post.vue'
+  import chat from '~/components/chat.vue'
 
   export default {
     components: {
-      messages,
-      post
+      chat,
     },
   }
 </script>
