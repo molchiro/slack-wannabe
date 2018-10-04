@@ -8,7 +8,12 @@ const store = () => new Vuex.Store({
     setAuthUser (state, user) {
       state.authUser = user
     }
-  }
+  },
+  getters: {
+    authUser: (state) => {
+      return state.authUser
+    },
+  },
 })
 
 export default store

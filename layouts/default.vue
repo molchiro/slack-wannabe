@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div style="display: flex; flex-direction: column">
     <appHeader></appHeader>
-    <div v-show="$store.state.authUser">
-      <nuxt></nuxt>
-    </div>
-    <div v-show="!$store.state.authUser">
-      <signIn></signIn>
-    </div>
+    <section class="content-body">
+      <div>
+        <div>
+          <nuxt v-show="authUser"></nuxt>
+          <signIn v-show="!authUser"></signIn>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -14,11 +16,25 @@
   import firebase from '~/plugins/firebase.js'
   import appHeader from '~/components/appHeader.vue'
   import signIn from '~/components/signIn.vue'
+  import { mapGetters } from 'vuex'
 
   export default {
     components: {
       appHeader,
       signIn
     },
+    computed: {
+      ...mapGetters([
+        'authUser',
+      ])
+    },
   }
 </script>
+
+<style scoped lang="sass">
+  .content-body
+    padding: 5px
+    flex-grow: 1
+    max-width: 600px
+    margin: 0 auto
+</style>
