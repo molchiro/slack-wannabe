@@ -7,6 +7,9 @@
       <span class="timestamp">
         {{ formatedTimestamp }}
       </span>
+      <button class="button" @click="deleteMessage">
+        削除
+      </button>
     </div>
     <div>
       <span class="my-message-body" v-text="message.content">
@@ -49,6 +52,11 @@
           this.message = snapshot.val()
         }
       )
+    },
+    methods: {
+      deleteMessage() {
+        this.messageRef.remove()
+      },
     },
   }
 </script>

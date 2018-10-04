@@ -19,6 +19,11 @@
   import firebase from '~/plugins/firebase.js'
   import message from '~/components/message.vue'
 
+  const indexOfSnapshotInRefs = (snapshot, refs) => {
+    const refKeys = refs.map(x => x.key);
+    return refKeys.indexOf(snapshot.key);
+  }
+
   export default {
     components: {
       message
@@ -30,10 +35,16 @@
     },
     mounted () {
       const messagesRef = firebase.database().ref('messages')
+      
       messagesRef.on('child_added', snapshot => {
         this.messageRefs.push(messagesRef.child(snapshot.key));
       })
-    }
+      messagesRef.on('child_removed', removedDataSnapshot => {
+        const removedDataIndex = indexOfSnapshotInRefs(
+                                    removedDataSnapshot, this.messageRefs)
+        this.messageRefs.splice(removedDataIndex, 1)
+      })
+    },
   }
 </script>
 
